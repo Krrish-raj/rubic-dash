@@ -322,7 +322,7 @@ export default function DashboardPage() {
             <div className="flex items-center">
               <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 
                            bg-clip-text text-transparent">
-                Personal Finance
+                Rubic Finance
               </h1>
             </div>
             <button
@@ -386,6 +386,7 @@ export default function DashboardPage() {
 
           {/* RIGHT - Profile Cards Grid (None + 6 Profiles in 2 rows) */}
           <div className="w-auto">
+            <h1 className='text-black font-bold text-lg mb-3'>Select Profile</h1>
             <div className="grid grid-cols-6 gap-2 mb-3">
               {/* None Card */}
               <ProfileCard

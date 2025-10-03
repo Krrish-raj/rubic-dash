@@ -326,7 +326,7 @@ function ResultsContent() {
                   <div className="text-right">
                     <p className="text-xs text-gray-600">Percentage</p>
                     <p className="text-base font-bold text-cyan-700">
-                      {allocation.percentage}%
+                      {Math.round(allocation.percentage)}%
                     </p>
                   </div>
                 </div>
@@ -335,7 +335,7 @@ function ResultsContent() {
                 <div className="mt-3 w-full bg-cyan-200 rounded-full h-1.5">
                   <div
                     className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"
-                    style={{ width: `${allocation.percentage}%` }}
+                    style={{ width: `${Math.round(allocation.percentage)}%` }}
                   />
                 </div>
               </div>
@@ -358,7 +358,7 @@ function ResultsContent() {
                     </h3>
                     <div className="text-right">
                       <p className="text-xl font-bold text-cyan-700">₹{allocation.amount.toLocaleString('en-IN')}</p>
-                      <p className="text-sm text-gray-600">{allocation.percentage.toFixed(2)}%</p>
+                      <p className="text-sm text-gray-600">{Math.round(allocation.percentage)}%</p>
                     </div>
                   </div>
                   

@@ -234,7 +234,7 @@ const AllocationPDF = ({ clientName, clientEmail, allocations, totalAmount, plan
           <View key={index} style={styles.allocationCard}>
             <View style={styles.allocationHeader}>
               <Text style={styles.allocationName}>{allocation.name}</Text>
-              <Text style={styles.allocationPercentage}>{allocation.percentage}%</Text>
+              <Text style={styles.allocationPercentage}>{Math.round(allocation.percentage)}%</Text>
             </View>
             <Text style={styles.allocationAmount}>{allocation.amount.toLocaleString('en-IN')}</Text>
           </View>
