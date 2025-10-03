@@ -10,12 +10,40 @@ interface AllocationItem {
   category: string;
 }
 
+interface FormData {
+  age: number;
+  employmentType: string;
+  dependents: number;
+  healthStatus: string;
+  riskAppetite: number;
+  financialMaturity: number;
+  marketOutlook: string;
+  location: string;
+  monthlyExpenses: number;
+  savingsPercentage: number;
+  realEstateValue: number;
+  isHousingLoan: boolean;
+  realEstateType: string;
+  currentSavings: number;
+  debts: number;
+  businessValue: number;
+}
+
+interface Goal {
+  timeline: number;
+  goal: string;
+  goal_value: number;
+  priority: number;
+}
+
 interface PDFDocumentProps {
   clientName: string;
   clientEmail: string;
   allocations: AllocationItem[];
   totalAmount: number;
   planData?: GeneratePlanResponse;
+  formData?: FormData;
+  goals?: Goal[];
 }
 
 const styles = StyleSheet.create({
@@ -196,10 +224,58 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#0369A1',
   },
+  formSection: {
+    marginBottom: 15,
+  },
+  formTitle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000000',
+    marginBottom: 8,
+    paddingBottom: 4,
+    borderBottom: '1 solid #E5E7EB',
+  },
+  formRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 4,
+  },
+  formLabel: {
+    fontSize: 10,
+    color: '#6B7280',
+    flex: 1,
+  },
+  formValue: {
+    fontSize: 10,
+    color: '#000000',
+    fontWeight: 'bold',
+    flex: 1,
+    textAlign: 'right',
+  },
+  goalItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 3,
+    paddingLeft: 8,
+  },
+  goalBullet: {
+    width: 3,
+    height: 3,
+    backgroundColor: '#3B82F6',
+    borderRadius: 1.5,
+    marginTop: 4,
+    marginRight: 6,
+  },
+  goalText: {
+    fontSize: 9,
+    color: '#374151',
+    flex: 1,
+  },
 });
 
-const AllocationPDF = ({ clientName, clientEmail, allocations, totalAmount, planData }: PDFDocumentProps) => (
+const AllocationPDF = ({ clientName, clientEmail, allocations, totalAmount, planData, formData, goals }: PDFDocumentProps) => (
   <Document>
+    {/* Page 1: Overview and Form Data */}
     <Page size="A4" style={styles.page}>
       {/* Header */}
       <View style={styles.header}>
@@ -223,6 +299,121 @@ const AllocationPDF = ({ clientName, clientEmail, allocations, totalAmount, plan
         <Text style={styles.summaryAmount}>{totalAmount.toLocaleString('en-IN')}</Text>
       </View>
 
+      {/* Form Data */}
+      {formData && (
+        <View style={styles.formSection}>
+          <Text style={styles.formTitle}>Personal Information & Financial Details</Text>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Age:</Text>
+            <Text style={styles.formValue}>{formData.age} years</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Employment Type:</Text>
+            <Text style={styles.formValue}>{formData.employmentType.replace('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Dependents:</Text>
+            <Text style={styles.formValue}>{formData.dependents}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Health Status:</Text>
+            <Text style={styles.formValue}>{formData.healthStatus.replace('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Risk Appetite:</Text>
+            <Text style={styles.formValue}>{formData.riskAppetite === -1 ? 'Conservative' : formData.riskAppetite === 0 ? 'Moderate' : 'Aggressive'}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Financial Maturity:</Text>
+            <Text style={styles.formValue}>{formData.financialMaturity === -1 ? 'Beginner' : formData.financialMaturity === 0 ? 'Intermediate' : 'Advanced'}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Market Outlook:</Text>
+            <Text style={styles.formValue}>{formData.marketOutlook.replace('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Location:</Text>
+            <Text style={styles.formValue}>{formData.location.replace('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Monthly Expenses:</Text>
+            <Text style={styles.formValue}>{formData.monthlyExpenses.toLocaleString('en-IN')}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Savings Percentage:</Text>
+            <Text style={styles.formValue}>{formData.savingsPercentage}%</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Real Estate Value:</Text>
+            <Text style={styles.formValue}>{formData.realEstateValue.toLocaleString('en-IN')}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Housing Loan:</Text>
+            <Text style={styles.formValue}>{formData.isHousingLoan ? 'Yes' : 'No'}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Real Estate Type:</Text>
+            <Text style={styles.formValue}>{formData.realEstateType.replace('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Current Savings:</Text>
+            <Text style={styles.formValue}>{formData.currentSavings.toLocaleString('en-IN')}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Debts:</Text>
+            <Text style={styles.formValue}>{formData.debts.toLocaleString('en-IN')}</Text>
+          </View>
+          
+          <View style={styles.formRow}>
+            <Text style={styles.formLabel}>Business Value:</Text>
+            <Text style={styles.formValue}>{formData.businessValue.toLocaleString('en-IN')}</Text>
+          </View>
+        </View>
+      )}
+
+      {/* Goals */}
+      {goals && goals.length > 0 && (
+        <View style={styles.formSection}>
+          <Text style={styles.formTitle}>Financial Goals</Text>
+          {goals.map((goal, index) => (
+            <View key={index} style={styles.goalItem}>
+              <View style={{ flexDirection: 'row', flex: 1 }}>
+                <View style={styles.goalBullet} />
+                <Text style={styles.goalText}>
+                  {goal.goal} - {goal.goal_value.toLocaleString('en-IN')} (Timeline: {goal.timeline} years, Priority: {goal.priority}/10)
+                </Text>
+              </View>
+            </View>
+          ))}
+        </View>
+      )}
+
+      {/* Footer */}
+      <View style={styles.footer}>
+        <Text>This report is generated by Personal Finance App</Text>
+        <Text>For informational purposes only. Please consult a financial advisor for personalized advice.</Text>
+      </View>
+    </Page>
+
+    {/* Page 2: Asset Allocations */}
+    <Page size="A4" style={styles.page}>
+      
+      
 
       {/* Allocations */}
       <View style={styles.section}>
@@ -255,7 +446,9 @@ export const generatePDF = async (
   clientEmail: string,
   allocations: AllocationItem[],
   totalAmount: number,
-  planData?: GeneratePlanResponse
+  planData?: GeneratePlanResponse,
+  formData?: FormData,
+  goals?: Goal[]
 ) => {
   const blob = await pdf(
     <AllocationPDF
@@ -264,6 +457,8 @@ export const generatePDF = async (
       allocations={allocations}
       totalAmount={totalAmount}
       planData={planData}
+      formData={formData}
+      goals={goals}
     />
   ).toBlob();
   

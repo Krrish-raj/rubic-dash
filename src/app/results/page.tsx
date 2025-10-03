@@ -3,8 +3,9 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
-import { Mail, Download, TrendingUp, DollarSign, LogOut } from 'lucide-react';
+import { Mail, Download, TrendingUp, DollarSign } from 'lucide-react';
 import Card from '@/components/Card';
+import Navbar from '@/components/Navbar';
 import { generatePDF } from '@/components/PDFDocument';
 import { GeneratePlanResponse, AssetAllocation } from '@/utils/api';
 
@@ -27,6 +28,32 @@ interface AllocationItem {
   category: string;
 }
 
+interface FormData {
+  age: number;
+  employmentType: string;
+  dependents: number;
+  healthStatus: string;
+  riskAppetite: number;
+  financialMaturity: number;
+  marketOutlook: string;
+  location: string;
+  monthlyExpenses: number;
+  savingsPercentage: number;
+  realEstateValue: number;
+  isHousingLoan: boolean;
+  realEstateType: string;
+  currentSavings: number;
+  debts: number;
+  businessValue: number;
+}
+
+interface Goal {
+  timeline: number;
+  goal: string;
+  goal_value: number;
+  priority: number;
+}
+
 function ResultsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -37,6 +64,8 @@ function ResultsContent() {
   const [totalAmount, setTotalAmount] = useState(0);
   const [clientName, setClientName] = useState('');
   const [clientEmail, setClientEmail] = useState('');
+  const [formData, setFormData] = useState<FormData | null>(null);
+  const [goals, setGoals] = useState<Goal[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -81,6 +110,8 @@ function ResultsContent() {
       try {
         const storedPlan = sessionStorage.getItem('generatedPlan');
         const storedClient = sessionStorage.getItem('clientInfo');
+        const storedFormData = sessionStorage.getItem('formData');
+        const storedGoals = sessionStorage.getItem('goals');
         
         if (storedPlan && storedClient) {
           const plan = JSON.parse(storedPlan) as GeneratePlanResponse;
@@ -91,10 +122,20 @@ function ResultsContent() {
           setClientEmail(clientInfo.email || 'Not provided');
           processPlanData(plan);
           
+          // Load form data and goals if available
+          if (storedFormData) {
+            setFormData(JSON.parse(storedFormData));
+          }
+          if (storedGoals) {
+            setGoals(JSON.parse(storedGoals));
+          }
+          
           // Clean up sessionStorage after a delay to ensure data is processed
           setTimeout(() => {
             sessionStorage.removeItem('generatedPlan');
             sessionStorage.removeItem('clientInfo');
+            sessionStorage.removeItem('formData');
+            sessionStorage.removeItem('goals');
           }, 1000);
         } else {
           console.error('No plan data found in sessionStorage');
@@ -145,7 +186,7 @@ function ResultsContent() {
   };
 
   const handleDownload = async () => {
-    await generatePDF(clientName, clientEmail, allocations, totalAmount, planData || undefined);
+    await generatePDF(clientName, clientEmail, allocations, totalAmount, planData || undefined, formData || undefined, goals);
   };
 
   if (loading) {
@@ -164,24 +205,11 @@ function ResultsContent() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-cyan-100 via-blue-100 to-blue-200">
         {/* Navigation Bar */}
-        <nav className="bg-white shadow border-b border-gray-300">
-          <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => router.push('/dashboard')}
-                  className="text-sm font-semobold text-gray-600 hover:text-gray-900 
-                           transition-colors"
-                >
-                  ←
-                </button>
-                <h1 className="text-xl font-bold text-gray-900">
-                  {error || 'Error'}
-                </h1>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <Navbar 
+          title={error || 'Error'}
+          showBackButton={true}
+          onBackClick={() => router.push('/dashboard')}
+        />
 
         {/* Error Content */}
         <main className="max-w-4xl mx-auto px-8 py-8">
@@ -215,35 +243,13 @@ function ResultsContent() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-100 via-blue-100 to-blue-200">
       {/* Navigation Bar */}
-      <nav className="bg-white shadow border-b border-gray-300">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => router.push('/dashboard')}
-                className="text-sm font-semobold text-gray-600 hover:text-gray-900 
-                         transition-colors"
-              >
-                ←
-              </button>
-              <h1 className="text-xl font-bold text-gray-900">
-                {planData?.message || 'Allocation Results'}
-              </h1>
-            </div>
-            <button
-              onClick={handleSignOut}
-              className="flex items-center px-4 py-2 text-sm font-medium 
-                       bg-white text-gray-700 
-                       border border-gray-300
-                       hover:border-gray-400 
-                       rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
-            >
-              <LogOut className="w-4 h-4 mr-2" />
-              Sign Out
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navbar 
+        title="My Plan"
+        showBackButton={true}
+        onBackClick={() => router.push('/dashboard')}
+        showSignOut={true}
+        onSignOut={handleSignOut}
+      />
 
       {/* Main Content */}
       <main className=" max-w-7xl mx-auto px-8 py-8 flex flex-col">

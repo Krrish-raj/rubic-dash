@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { LogOut, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 import Card from '@/components/Card';
+import Navbar from '@/components/Navbar';
 import ProfileCard from '@/components/ProfileCard';
 import ConfirmationModal from '@/components/ConfirmationModal';
 import profilesData from '@/constants/constants.json';
@@ -285,6 +286,8 @@ export default function DashboardPage() {
       // Store data in sessionStorage to avoid URL length issues
       sessionStorage.setItem('generatedPlan', JSON.stringify(response));
       sessionStorage.setItem('clientInfo', JSON.stringify(clientInfo));
+      sessionStorage.setItem('formData', JSON.stringify(formData));
+      sessionStorage.setItem('goals', JSON.stringify(goals));
       
       // Auto-redirect to results page
       window.location.href = '/results?generated=true';
@@ -315,30 +318,12 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-100 via-blue-100 to-blue-200">
       {/* Navigation Bar */}
-      <nav className="bg-gradient-to-r from-blue-50 to-indigo-50 
-                    shadow-lg border-b-2 border-blue-200">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 
-                           bg-clip-text text-transparent">
-                Rubic Finance
-              </h1>
-            </div>
-            <button
-              onClick={handleSignOut}
-              className="flex items-center px-4 py-2 text-sm font-medium 
-                       bg-white text-gray-700 
-                       border-2 border-blue-200
-                       hover:border-blue-300 
-                       rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
-            >
-              <LogOut className="w-4 h-4 mr-2" />
-              Sign Out
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navbar 
+        title="Rubic Finance"
+        showSignOut={true}
+        onSignOut={handleSignOut}
+        variant="dashboard"
+      />
 
       {/* Main Content */}
       <main className="min-h-screen max-w-7xl mx-auto px-8 py-8 flex flex-col">

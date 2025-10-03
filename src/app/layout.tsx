@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Personal Finance",
+  title: "Rubic Finance",
   description: "Personal Finance App - Financial Planning and Asset Allocation",
 };
 
