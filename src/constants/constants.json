@@ -1,0 +1,616 @@
+{
+  "data": [
+    {
+      "tag": "fresh_start",
+      "name": "Aarav - The Fresh Start",
+      "demographics": {
+        "age": 26,
+        "employment_type": "salaried",
+        "dependents": 0,
+        "health_status": "good",
+        "risk_appetite": -1,
+        "financial_maturity": -1,
+        "market_outlook": "bullish",
+        "location": "tier_1"
+      },
+      "financials": {
+        "monthly_expenses": 45000,
+        "savings_percentage": 20,
+        "real_estate_value": 0,
+        "is_housing_loan": false,
+        "real_estate_type": "tier_1_residential",
+        "current_savings_and_investments": 300000,
+        "debts": 800000,
+        "business_value": 0
+      },
+      "current_allocations": [
+        {
+          "name": "emergency_funds",
+          "position": {
+            "row": 1,
+            "col": 1
+          },
+          "riskiness": 1,
+          "illiquidity": 1,
+          "amount": 135000,
+          "currency": "INR",
+          "percentage": 45,
+          "explanation": {
+            "en": "Emergency fund in savings account"
+          },
+          "assets": [
+            {
+              "name": "Savings Account",
+              "amount": 135000,
+              "currency": "INR",
+              "percentage": 100,
+              "risk": 0,
+              "illiquidity": 0,
+              "tax_efficiency": 0,
+              "yield_pct": 4,
+              "future_value": 135000
+            }
+          ]
+        },
+        {
+          "name": "safe_investments",
+          "position": {
+            "row": 3,
+            "col": 1
+          },
+          "riskiness": 1,
+          "illiquidity": 2,
+          "amount": 90000,
+          "currency": "INR",
+          "percentage": 30,
+          "explanation": {
+            "en": "Safe investments for stability"
+          },
+          "assets": [
+            {
+              "name": "Debt Mutual Fund",
+              "amount": 90000,
+              "currency": "INR",
+              "percentage": 100,
+              "risk": 0.1,
+              "illiquidity": 0.2,
+              "tax_efficiency": 0.6,
+              "yield_pct": 7,
+              "future_value": 90000
+            }
+          ]
+        },
+        {
+          "name": "diversified_returns",
+          "position": {
+            "row": 2,
+            "col": 2
+          },
+          "riskiness": 2,
+          "illiquidity": 2,
+          "amount": 75000,
+          "currency": "INR",
+          "percentage": 25,
+          "explanation": {
+            "en": "Diversified balanced fund"
+          },
+          "assets": [
+            {
+              "name": "Balanced Fund",
+              "amount": 75000,
+              "currency": "INR",
+              "percentage": 100,
+              "risk": 0.2,
+              "illiquidity": 0.2,
+              "tax_efficiency": 0.7,
+              "yield_pct": 9,
+              "future_value": 75000
+            }
+          ]
+        },
+        {
+          "name": "active_investments",
+          "position": {
+            "row": 2,
+            "col": 1
+          },
+          "riskiness": 2,
+          "illiquidity": 2,
+          "amount": 60000,
+          "currency": "INR",
+          "percentage": 20,
+          "explanation": {
+            "en": "Active investment in stocks and ETFs"
+          },
+          "assets": [
+            {
+              "name": "Nifty 50 ETF",
+              "amount": 60000,
+              "currency": "INR",
+              "percentage": 100,
+              "risk": 0.3,
+              "illiquidity": 0.1,
+              "tax_efficiency": 0.8,
+              "yield_pct": 12,
+              "future_value": 60000
+            }
+          ]
+        }
+      ],
+      "goals_input": [
+        {
+          "timeline": 1,
+          "goal": "Emergency fund",
+          "goal_id": "emergency_1",
+          "goal_value": 150000,
+          "priority": 9
+        },
+        {
+          "timeline": 6,
+          "goal": "House down payment",
+          "goal_id": "house_down_1",
+          "goal_value": 1500000,
+          "priority": 8
+        },
+        {
+          "timeline": 3,
+          "goal": "International vacation",
+          "goal_id": "vacation_1",
+          "goal_value": 200000,
+          "priority": 5
+        }
+      ],
+      "goal_output": null
+    },
+    {
+      "tag": "steady_climber",
+      "name": "Priya - The Steady Climber",
+      "demographics": {
+        "age": 32,
+        "employment_type": "salaried",
+        "dependents": 1,
+        "health_status": "good",
+        "risk_appetite": -1,
+        "financial_maturity": 0,
+        "market_outlook": "neutral",
+        "location": "tier_1"
+      },
+      "financials": {
+        "monthly_expenses": 75000,
+        "savings_percentage": 25,
+        "real_estate_value": 5500000,
+        "is_housing_loan": true,
+        "real_estate_type": "tier_1_residential",
+        "current_savings_and_investments": 1500000,
+        "debts": 3500000,
+        "business_value": 0
+      },
+      "current_allocations": [
+        {
+          "name": "emergency_funds",
+          "position": {
+            "row": 1,
+            "col": 1
+          },
+          "riskiness": 1,
+          "illiquidity": 1,
+          "amount": 225000,
+          "currency": "INR",
+          "percentage": 15,
+          "explanation": {
+            "en": "Emergency fund in savings account"
+          },
+          "assets": [
+            {
+              "name": "Savings Account",
+              "amount": 225000,
+              "currency": "INR",
+              "percentage": 100,
+              "risk": 0,
+              "illiquidity": 0,
+              "tax_efficiency": 0,
+              "yield_pct": 4,
+              "future_value": 225000
+            }
+          ]
+        },
+        {
+          "name": "safe_investments",
+          "position": {
+            "row": 3,
+            "col": 1
+          },
+          "riskiness": 1,
+          "illiquidity": 2,
+          "amount": 450000,
+          "currency": "INR",
+          "percentage": 30,
+          "explanation": {
+            "en": "Safe investments for stability"
+          },
+          "assets": [
+            {
+              "name": "Debt Mutual Fund",
+              "amount": 450000,
+              "currency": "INR",
+              "percentage": 100,
+              "risk": 0.1,
+              "illiquidity": 0.2,
+              "tax_efficiency": 0.6,
+              "yield_pct": 7,
+              "future_value": 450000
+            }
+          ]
+        },
+        {
+          "name": "diversified_returns",
+          "position": {
+            "row": 2,
+            "col": 2
+          },
+          "riskiness": 2,
+          "illiquidity": 2,
+          "amount": 375000,
+          "currency": "INR",
+          "percentage": 25,
+          "explanation": {
+            "en": "Diversified balanced fund"
+          },
+          "assets": [
+            {
+              "name": "Balanced Fund",
+              "amount": 375000,
+              "currency": "INR",
+              "percentage": 100,
+              "risk": 0.2,
+              "illiquidity": 0.2,
+              "tax_efficiency": 0.7,
+              "yield_pct": 9,
+              "future_value": 375000
+            }
+          ]
+        },
+        {
+          "name": "active_investments",
+          "position": {
+            "row": 2,
+            "col": 1
+          },
+          "riskiness": 2,
+          "illiquidity": 2,
+          "amount": 300000,
+          "currency": "INR",
+          "percentage": 20,
+          "explanation": {
+            "en": "Active investment in stocks and ETFs"
+          },
+          "assets": [
+            {
+              "name": "Nifty 50 ETF",
+              "amount": 300000,
+              "currency": "INR",
+              "percentage": 100,
+              "risk": 0.3,
+              "illiquidity": 0.1,
+              "tax_efficiency": 0.8,
+              "yield_pct": 11,
+              "future_value": 300000
+            }
+          ]
+        },
+        {
+          "name": "high_growth_opportunities",
+          "position": {
+            "row": 1,
+            "col": 2
+          },
+          "riskiness": 3,
+          "illiquidity": 2,
+          "amount": 150000,
+          "currency": "INR",
+          "percentage": 10,
+          "explanation": {
+            "en": "High growth equity mutual funds"
+          },
+          "assets": [
+            {
+              "name": "Large Cap Equity Fund",
+              "amount": 150000,
+              "currency": "INR",
+              "percentage": 100,
+              "risk": 0.3,
+              "illiquidity": 0.2,
+              "tax_efficiency": 0.8,
+              "yield_pct": 12,
+              "future_value": 150000
+            }
+          ]
+        }
+      ],
+      "goals_input": [
+        {
+          "timeline": 5,
+          "goal": "House upgrade",
+          "goal_id": "house_upgrade_1",
+          "goal_value": 2000000,
+          "priority": 8
+        },
+        {
+          "timeline": 12,
+          "goal": "Child education fund",
+          "goal_id": "child_edu_1",
+          "goal_value": 1500000,
+          "priority": 9
+        },
+        {
+          "timeline": 25,
+          "goal": "Retirement corpus",
+          "goal_id": "retirement_1",
+          "goal_value": 30000000,
+          "priority": 10
+        }
+      ],
+      "goal_output": null
+    },
+    {
+      "tag": "growth_seeker",
+      "name": "Rohit - The Growth Seeker",
+      "demographics": {
+        "age": 35,
+        "employment_type": "salaried",
+        "dependents": 2,
+        "health_status": "good",
+        "risk_appetite": 1,
+        "financial_maturity": 1,
+        "market_outlook": "bullish",
+        "location": "tier_1"
+      },
+      "financials": {
+        "monthly_expenses": 95000,
+        "savings_percentage": 30,
+        "real_estate_value": 8000000,
+        "is_housing_loan": true,
+        "real_estate_type": "tier_1_residential",
+        "current_savings_and_investments": 2500000,
+        "debts": 2000000,
+        "business_value": 0
+      },
+      "current_allocations": [
+        {
+          "name": "emergency_funds",
+          "position": { "row": 1, "col": 1 },
+          "riskiness": 1,
+          "illiquidity": 1,
+          "amount": 285000,
+          "currency": "INR",
+          "percentage": 11.4
+        },
+        {
+          "name": "high_growth_opportunities",
+          "position": { "row": 1, "col": 2 },
+          "riskiness": 3,
+          "illiquidity": 2,
+          "amount": 750000,
+          "currency": "INR",
+          "percentage": 30
+        },
+        {
+          "name": "active_investments",
+          "position": { "row": 2, "col": 1 },
+          "riskiness": 2,
+          "illiquidity": 2,
+          "amount": 500000,
+          "currency": "INR",
+          "percentage": 20
+        },
+        {
+          "name": "diversified_returns",
+          "position": { "row": 2, "col": 2 },
+          "riskiness": 2,
+          "illiquidity": 2,
+          "amount": 625000,
+          "currency": "INR",
+          "percentage": 25
+        }
+      ],
+      "goals_input": [
+        {
+          "timeline": 4,
+          "goal": "Premium house",
+          "goal_id": "premium_house_1",
+          "goal_value": 5000000,
+          "priority": 7
+        },
+        {
+          "timeline": 10,
+          "goal": "Child foreign education",
+          "goal_id": "child_foreign_edu_1",
+          "goal_value": 5000000,
+          "priority": 9
+        },
+        {
+          "timeline": 15,
+          "goal": "Early retirement",
+          "goal_id": "early_retirement_1",
+          "goal_value": 60000000,
+          "priority": 10
+        }
+      ],
+      "goal_output": null
+    },
+    {
+      "tag": "security_builder",
+      "name": "Suresh - The Security Builder",
+      "demographics": {
+        "age": 38,
+        "employment_type": "salaried",
+        "dependents": 3,
+        "health_status": "good",
+        "risk_appetite": -1,
+        "financial_maturity": 0,
+        "market_outlook": "neutral",
+        "location": "tier_2"
+      },
+      "financials": {
+        "monthly_expenses": 65000,
+        "savings_percentage": 35,
+        "real_estate_value": 4000000,
+        "is_housing_loan": true,
+        "real_estate_type": "tier_2_residential",
+        "current_savings_and_investments": 1800000,
+        "debts": 2500000,
+        "business_value": 0
+      },
+      "current_allocations": [
+        {
+          "name": "emergency_funds",
+          "position": { "row": 1, "col": 1 },
+          "riskiness": 1,
+          "illiquidity": 1,
+          "amount": 195000,
+          "currency": "INR",
+          "percentage": 10.8
+        },
+        {
+          "name": "safe_investments",
+          "position": { "row": 3, "col": 1 },
+          "riskiness": 1,
+          "illiquidity": 2,
+          "amount": 630000,
+          "currency": "INR",
+          "percentage": 35
+        },
+        {
+          "name": "diversified_returns",
+          "position": { "row": 2, "col": 2 },
+          "riskiness": 2,
+          "illiquidity": 2,
+          "amount": 450000,
+          "currency": "INR",
+          "percentage": 25
+        },
+        {
+          "name": "active_investments",
+          "position": { "row": 2, "col": 1 },
+          "riskiness": 2,
+          "illiquidity": 2,
+          "amount": 360000,
+          "currency": "INR",
+          "percentage": 20
+        }
+      ],
+      "goals_input": [
+        {
+          "timeline": 8,
+          "goal": "Child education",
+          "goal_id": "child_edu_2",
+          "goal_value": 1200000,
+          "priority": 10
+        },
+        {
+          "timeline": 17,
+          "goal": "Retirement security",
+          "goal_id": "retirement_2",
+          "goal_value": 25000000,
+          "priority": 10
+        },
+        {
+          "timeline": 5,
+          "goal": "Parents healthcare fund",
+          "goal_id": "parents_health_1",
+          "goal_value": 500000,
+          "priority": 8
+        }
+      ],
+      "goal_output": null
+    },
+    {
+      "tag": "business_balancer",
+      "name": "Meera - The Business Balancer",
+      "demographics": {
+        "age": 44,
+        "employment_type": "business_owner",
+        "dependents": 2,
+        "health_status": "good",
+        "risk_appetite": 0,
+        "financial_maturity": 1,
+        "market_outlook": "bullish",
+        "location": "tier_2"
+      },
+      "financials": {
+        "monthly_expenses": 110000,
+        "savings_percentage": 30,
+        "real_estate_value": 2500000,
+        "is_housing_loan": true,
+        "real_estate_type": "commercial",
+        "current_savings_and_investments": 3500000,
+        "debts": 6000000,
+        "business_value": 12000000
+      },
+      "current_allocations": [
+        {
+          "name": "emergency_funds",
+          "position": { "row": 1, "col": 1 },
+          "riskiness": 1,
+          "illiquidity": 1,
+          "amount": 330000,
+          "currency": "INR",
+          "percentage": 9.4
+        },
+        {
+          "name": "safe_investments",
+          "position": { "row": 3, "col": 1 },
+          "riskiness": 1,
+          "illiquidity": 2,
+          "amount": 1050000,
+          "currency": "INR",
+          "percentage": 30
+        },
+        {
+          "name": "diversified_returns",
+          "position": { "row": 2, "col": 2 },
+          "riskiness": 2,
+          "illiquidity": 2,
+          "amount": 875000,
+          "currency": "INR",
+          "percentage": 25
+        },
+        {
+          "name": "active_investments",
+          "position": { "row": 2, "col": 1 },
+          "riskiness": 2,
+          "illiquidity": 2,
+          "amount": 700000,
+          "currency": "INR",
+          "percentage": 20
+        }
+      ],
+      "goals_input": [
+        {
+          "timeline": 3,
+          "goal": "Business expansion",
+          "goal_id": "biz_expansion_1",
+          "goal_value": 8000000,
+          "priority": 8
+        },
+        {
+          "timeline": 5,
+          "goal": "Commercial property",
+          "goal_id": "commercial_prop_1",
+          "goal_value": 6000000,
+          "priority": 7
+        },
+        {
+          "timeline": 12,
+          "goal": "Child marriage",
+          "goal_id": "child_marriage_1",
+          "goal_value": 2000000,
+          "priority": 9
+        }
+      ],
+      "goal_output": null
+    }
+    
+  ]
+}
+
