@@ -12,11 +12,26 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     
     if (!error) {
-      return NextResponse.redirect(`${origin}${next}`);
+      // Use the configured site URL instead of origin to ensure consistency
+      const redirectUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${next}`;
+      const response = NextResponse.redirect(redirectUrl);
+      
+      // Set minimal headers to avoid nginx "too big header" error
+      response.headers.delete('x-middleware-rewrite');
+      response.headers.delete('x-middleware-next');
+      
+      return response;
     }
   }
 
   // Return the user to an error page with instructions
-  return NextResponse.redirect(`${origin}/error?message=${encodeURIComponent('Authentication failed. Please try again.')}`);
+  const errorUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/error?message=${encodeURIComponent('Authentication failed. Please try again.')}`;
+  const response = NextResponse.redirect(errorUrl);
+  
+  // Set minimal headers to avoid nginx "too big header" error
+  response.headers.delete('x-middleware-rewrite');
+  response.headers.delete('x-middleware-next');
+  
+  return response;
 }
 
